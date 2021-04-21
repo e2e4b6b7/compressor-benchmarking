@@ -8,19 +8,19 @@
 namespace wrappers {
 
 size_t lz4_bound_wrapper(size_t src_len) {
-    assert(src_len <= std::numeric_limits<int>::max());
+    assert(src_len <= (size_t)std::numeric_limits<int>::max());
     return static_cast<size_t>(LZ4_compressBound(static_cast<int>(src_len)));
 }
 
 size_t lz4_compress_wrapper(const char *src, size_t src_len, char *dst, size_t dst_len) {
-    assert(src_len <= std::numeric_limits<int>::max());
-    assert(dst_len <= std::numeric_limits<int>::max());
+    assert(src_len <= (size_t)std::numeric_limits<int>::max());
+    assert(dst_len <= (size_t)std::numeric_limits<int>::max());
     return static_cast<size_t>(LZ4_compress_default(src, dst, static_cast<int>(src_len), static_cast<int>(dst_len)));
 }
 
 size_t lz4_decompress_wrapper(const char *src, size_t src_len, char *dst, size_t dst_len) {
-    assert(src_len <= std::numeric_limits<int>::max());
-    assert(dst_len <= std::numeric_limits<int>::max());
+    assert(src_len <= (size_t)std::numeric_limits<int>::max());
+    assert(dst_len <= (size_t)std::numeric_limits<int>::max());
     return static_cast<size_t>(LZ4_decompress_safe(src, dst, static_cast<int>(src_len), static_cast<int>(dst_len)));
 }
 
